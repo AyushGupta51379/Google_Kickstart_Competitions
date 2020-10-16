@@ -1,0 +1,44 @@
+import math
+def ATM_Queue2(N, X, A):
+  B = [] # 2D array with number of person and attempts he needs to get money
+  total_attempts = 0 # to store the total number of attempts these guys will need
+
+  for i in range(0, len(A)):
+    attempts = math.ceil(float(A[i])/X) # here float is done to ensure that we get correct ratio,
+    # before converting it to attempts in integer
+    B.append([attempts, i])
+    total_attempts += int(attempts)
+  #print(B) # Debugging
+
+  # Now sort B, 1st ensuring that index is followed, 2nd ensuring that attempts
+  # that is, Sort((Sort(B, acc to index)), acc to attempts)
+  sorted_B = sorted(sorted(B, key = lambda l:l[1]), key = lambda l:l[0])
+
+  P = [] # 1D array to store number of person as he leaves
+  for element in sorted_B:
+    P.append(element[1]+1) # appending index+1 as the number of person
+
+  #print("End of program", "\n")
+  return P # returns the array of order in which people leave
+
+# T value
+T = int(input())
+# T test cases
+for t in range(0, T):
+  # N and X
+  N, X = map(int, input().split()) # map(type, data = input().split())
+  # here the normal split is used, it splits whitespaces
+  # Array of N integers
+  A = list(map(int, input().split())) # list converts the map to list, instead of variables
+  # map(type, data = input().split) # here split splits the whitespaces 
+
+  # order of leaving, need to reset it to correct order
+  leave = ATM_Queue2(N, X, A) # [i for i in range(0, len(A))]
+
+  # Code for output
+  print("Case #", end = "") # Case #
+  print(t+1, end = "") # test number, starts with 1
+  print(": ", end = "") # :
+  for i in range(0, len(leave)):
+    print(leave[i], end = " ")
+  print() 

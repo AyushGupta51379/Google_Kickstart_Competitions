@@ -1,0 +1,57 @@
+import math
+def ATM_Queue(N, X, A):
+  B = [] # 2D array with number of person and attempts he needs to get money
+  total_attempts = 0 # to store the total number of attempts these guys will need
+
+  for i in range(0, len(A)):
+    attempts = math.ceil(float(A[i])/X) # here float is done to ensure that we get correct ratio,
+    # before converting it to attempts in integer
+    B.append([i, attempts])
+    total_attempts += int(attempts)
+  #print(B) # Debugging
+  #print("\n", "Starting while loop...", "\n")
+
+  # Now, B is correctly filled with number and attempts
+  P = [] # 1D array to store number of person as he leaves
+  # Now, we loop over B, using while loop
+  i = -1
+  while (i < total_attempts): # initially this is the only way
+    i += 1
+    if (len(P) == N):
+      #print("All persons done", "\n")
+      break;
+
+    if (B[i][1]-1 == 0):
+      # remove this person, by appending to P
+      P.append(B[i][0]+1) # we added 1 since answer has person number start with 1
+      #print(P, "\n") # Debugging
+    else:
+      # we need to append B[i], with B[i][0], B[i][1]-1 at the end of B
+      element = [B[i][0], B[i][1]-1]
+      B.append(element)
+
+    # This goes on till we get everyone in the P list
+  #print("End of program", "\n")
+  return P # returns the array of order in which people leave
+
+# T value
+T = int(input())
+# T test cases
+for t in range(0, T):
+  # N and X
+  N, X = map(int, input().split()) # map(type, data = input().split())
+  # here the normal split is used, it splits whitespaces
+  # Array of N integers
+  A = list(map(int, input().split())) # list converts the map to list, instead of variables
+  # map(type, data = input().split) # here split splits the whitespaces 
+
+  # order of leaving, need to reset it to correct order
+  leave = ATM_Queue(N, X, A) # [i for i in range(0, len(A))]
+
+  # Code for output
+  print("Case #", end = "") # Case #
+  print(t+1, end = "") # test number, starts with 1
+  print(": ", end = "") # :
+  for i in range(0, len(leave)):
+    print(leave[i], end = " ")
+  print() 
