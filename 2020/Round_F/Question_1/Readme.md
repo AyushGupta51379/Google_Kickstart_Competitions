@@ -6,7 +6,7 @@ O(n) space and O(n) time complexities, for each test case, where n is the number
 
 Overall, O(biggest_n) space and O(biggest_n) time complexities, for all test cases combined, where biggest_n is the largest value of number of people, out of all the test cases.
 
-### Text_3.txt has 3rd solution in text format - works perfectly well
+### Text_3.txt has 3rd solution (= correct solution) in text format - works perfectly well
 #### Good solution, utilizes sorting of people according to:
 ##### Number of attempts they need, and
 ##### Their initial order in queue
