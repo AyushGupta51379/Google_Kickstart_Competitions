@@ -1,0 +1,73 @@
+import math
+def Painters_Duel_Sis2(S, RA, PA, RB, PB, C, A):
+  rooms = [[1,1], [2,1], [2,2], [2,3]]
+  center = [2,2]
+  corner = [[1,1], [2,1], [2,3]]
+  score = 0
+  if (C == 0):
+    # case 1 no construction
+    if ([RA, PA] != center and [RB, PB] != center):
+      # no player has center room
+      score = 2
+    elif ([RA, PA] == center):
+      # player A has center room
+      score = 1
+    else:
+      # player B has center room
+      score = -1
+  
+  elif (C >= 2): # C = 2 means both other rooms are occupied, C>2 means error, return 0
+    score = 0
+  elif (C == 1):
+    if (A[0] == center):
+      # center room blocked
+      score = 0
+    else:
+      # corner room blocked
+      if ([RA, PA] != center and [RB, PB] != center):
+        # no player has center room
+        score = 1 # A takes the center, that's it
+      elif ([RA, PA] == center):
+        # player A has center room
+        score = 1
+      else:
+        # player B has center room
+        score = -1
+
+  #print("Score: ", score)
+  #print("End of program", "\n")
+  return score
+
+# T value
+T = int(input())
+
+#print(T) # Debugging, comment it out later
+
+# T test cases
+for t in range(0, T):
+  S, RA, PA, RB, PB, C = map(int, input().split()) # map(type, data = input().split())
+  # here the normal split is used, it splits whitespaces
+
+  A = [] # Array to store under construction
+
+  if(C > 0):
+    for n in range(0, C): # Covering C number of under construction
+      # Array of a pair of m, n = row and column indices, note that these indices start with 1
+      a = list(map(int, input().split())) # list converts the map to list, instead of variables
+      # map(type, data = input().split) # here split splits the whitespaces  
+      A.append(a)
+
+  #print("Test case: ", t) # Debugging, comment it out later
+  #print(S, " ", RA, " ", PA, " ", RB, " ", PB, " ", C) # Debugging, comment it out later
+ # print(A) # Debugging, comment it out later
+  if (S == 2):
+    best_score = Painters_Duel_Sis2(S, RA, PA, RB, PB, C, A) 
+  else:
+    best_score = 0
+
+  # Code for output
+  print("Case #", end = "") # Case #
+  print(t+1, end = "") # test number, starts with 1
+  print(": ", end = "") # :
+  print(best_score, end = " ")
+  print()
