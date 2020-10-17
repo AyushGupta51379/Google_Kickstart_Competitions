@@ -20,7 +20,7 @@ sorted_B = sorted(sorted(B, key = lambda l:l[1]), key = lambda l:l[0])
 
 ### Notebook folder has my colab notebook
 
-## Correct solution - with O(n) space and O(n) time complexities, 
+## Correct solution - Efficient code - with O(n) space and O(n) time complexities, 
 
 O(n) space and O(n) time complexities, for each test case, where n is the number of people in each test case.
 
@@ -34,7 +34,7 @@ Overall, O(biggest_n) space and O(biggest_n) time complexities, for all test cas
 ##### Reason of O(nlogn) time - Sorting n elements takes O(nlogn) time, looping over n elements takes O(n) time, Overall, O(nlogn) time complexity, for each test case, where n is the number of people
 ##### Reason of O(n) space - B is 2D array of 2*n occupying O(n) space, A and P are 1D arrays of 1*n occupying O(n) space,, for each test case, where n is the number of people
 
-## Other Solutions - Correct on 1st case, Memory/Time Error on 2nd case:
+## Other Solutions - Brute forced approaches - Correct on 1st case, Memory/Time Error on 2nd case:
 
 ### Text_2.txt has 2nd solution in text format - gives TLE on 2nd case
 #### Time limit error - TLE
