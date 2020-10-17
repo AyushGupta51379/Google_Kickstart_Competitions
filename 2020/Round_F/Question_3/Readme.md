@@ -1,3 +1,9 @@
+# Question 3 of Round F of Google Kickstart 2020
+
+# Code in Text_1.txt and also in notebook - Final code 1 
+### works perfectly well and gives us 12 points 
+### for the test set 1 of question 3 of Round F of Google Kickstart 2020
+
 # Concept
 
 ### Best concept
