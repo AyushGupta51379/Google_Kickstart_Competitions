@@ -50,6 +50,6 @@ Overall, O(biggest_n) space and O(biggest_n) time complexities, for all test cas
 
 Uses Brute Force approach, to simulate how the process happens
 
-Reason of error - we take O(total number of attempts) space, for each test case
+#### Reason of error - we take O(total number of attempts) space, for each test case
 
 #### Reason of error - we take O(total number of attempts) time, for each test case
