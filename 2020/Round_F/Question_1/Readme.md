@@ -14,7 +14,7 @@ We need to sort using indices, then over that we sort using attempts needed. Thi
 
 sorted_B = sorted(sorted(B, key = lambda l:l[1]), key = lambda l:l[0])
 
-#### This gives us our best solution, code in Text_.txt and also in Code 3 from notebook.
+#### This gives us our best solution, code in Text_3.txt and also in Code 3 from notebook.
 
 # Code
 
