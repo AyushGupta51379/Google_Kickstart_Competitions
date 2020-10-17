@@ -1,3 +1,23 @@
+# Concept
+
+### Best concept
+#### Calculate the minimum number of attemps needed by each person 
+Using Money divided by Max_Amount, that is, A[i]/X.
+
+Now, take the math.ceil of that, to get minimum number of attempts = math.ceil(A[i]/X).
+
+Let's call this 2D array B, where B[i] = [i, math.ceil(A[i]/X)], storing the index and attempts needed for each person in A.
+
+#### Sort the above obtained Array B, to get the order of leaving.
+
+We need to sort using indices, then over that we sort using attempts needed. This is done because for people needing same number of attempts, we need to order them using their original order, that is indices in A. We already stored indices from A in the 1st element of every B[i] and attempts in 2nd element of every B[i].
+
+sorted_B = sorted(sorted(B, key = lambda l:l[1]), key = lambda l:l[0])
+
+#### This gives us our best solution, code in Text_.txt and also in Code 3 from notebook.
+
+# Code
+
 ### Notebook folder has my colab notebook
 
 ## Correct solution - with O(n) space and O(n) time complexities, 
