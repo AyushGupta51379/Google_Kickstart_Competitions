@@ -1,0 +1,47 @@
+# original soln my
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+import math
+T = int(input())
+for p in range(0, T):
+    N, K = map(int, input().split())
+    mind = 0
+    B = []
+    for q in range(0, N):
+      B.append(list(map(int, input().split())))
+    #print(A) # got all the intervals for this guy
+    # deploy if the current is not enough, always deploy at Si
+
+    A = sorted(B, key = lambda l:l[0])
+    #print(A)
+    current = 0
+    prev_end = 0
+    for i in range(0, N):
+      si = A[i][0]
+      ei = A[i][1]
+      dep_at = si
+      if(prev_end > si):
+        # previous has not ended yet
+        duration = ei-prev_end # since we do not want to reincur
+        dep_at = prev_end
+      else:
+        duration = ei-si # since this is new
+        dep_at = si
+      # if duration is more than 1 robot's length, we deploy again
+      quotient = math.ceil(duration/K) # max length needed now
+      remainder = duration % K
+      # if previous deployment is enough?
+      if(quotient > 0 and duration > 0):
+        mind += quotient # deployed again for quotient times
+        #print(prev_end, end=", ")
+        prev_end =  dep_at+K*quotient # will be okay till prev_end time
+        #print(si, ", ", ei, ", ", dep_at)
+        #print("Deployed: ", quotient)
+
+        # otherwise, prev end remains same, mind remains same
+      
+    print("Case #", end = "")
+    print(p+1, end = "")
+    print(": ", end = "")
+    print(mind, end = " ")
+    print()

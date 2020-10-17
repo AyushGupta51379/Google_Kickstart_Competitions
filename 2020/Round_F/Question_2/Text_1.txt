@@ -1,0 +1,83 @@
+import math
+def Metal_Harvest(N, K, A):
+  B = [] # 2D array with intervals arranged in ascending order of starting times
+  B = sorted(A, key = lambda l:l[0])
+  #print("Sorted intervals are: ", B)
+  #print()
+
+  s1 = B[0][0]
+  e1 = B[0][1]
+  #print("Interval: ", 1, " , Values: ",B[0]) # debugging
+  Sj = s1 # starting time of 1st interval
+  num_robots = 0
+  m1 = math.ceil((e1-s1)/K) # num robots for 1st interval
+  #print("Deploying new robot at: ", Sj)
+  #print("Deployed ", m1, " robots for this interval")
+  Ej = Sj+m1*K
+  #print("Ending of this robot: ", Ej)
+  num_robots += m1
+
+  for i in range(1, len(B)):
+    si = B[i][0]
+    ei = B[i][1]
+    #print()
+    #print("Interval: ", i, " , Values: ",B[i]) # debugging
+
+    if (Ej > si): # if ending of j robot is greater than starting of ith interval
+      #print("Ending of prev robot: ",Ej)
+      if (Ej >= ei): # robot can cover this interval too
+        mi = 0
+      else:
+        mi = math.ceil((ei-Ej)/K) # if robot covers this interval, then mi = 0, which is also fine
+      #print("Deployed ", mi, " robots for this interval")
+      #print("Num of robots: ", mi)
+      Ej = Ej + mi*K
+      #print("Ending of this robot: ", Ej)
+      num_robots += mi
+    else:
+      # if ending of j robot is not enough to start ith interval
+      # deploy new robots
+      mi = math.ceil((ei-si)/K) # num robots for ith interval
+      Sj = si # at starting of ith interval
+      #print("Deploying new robot at: ", Sj)
+      #print("Deployed ", mi, " robots for this interval")
+      Ej = Sj+mi*K
+      #print("Ending of this robot: ", Ej)
+      num_robots += mi
+
+  #print("Number of robots: ", num_robots)
+  #print("End of program", "\n")
+  return num_robots
+
+# T value
+T = int(input())
+
+#print(T) # Debugging, comment it out later
+
+# T test cases
+for t in range(0, T):
+  # N and X
+  N, K = map(int, input().split()) # map(type, data = input().split())
+  # here the normal split is used, it splits whitespaces
+
+  A = [] # Array to store intervals
+
+  for n in range(0, N): # Covering N number of intervals
+    # Array of N integers
+    a = list(map(int, input().split())) # list converts the map to list, instead of variables
+    # map(type, data = input().split) # here split splits the whitespaces  
+    A.append(a)
+
+  #print("Test case: ", t) # Debugging, comment it out later
+  #print(N, " ", K) # Debugging, comment it out later
+  #print(A) # Debugging, comment it out later
+
+  # order of leaving, need to reset it to correct order
+  num_deployments = Metal_Harvest(N, K, A) # number of deployments needed
+
+  # Code for output
+  print("Case #", end = "") # Case #
+  print(t+1, end = "") # test number, starts with 1
+  print(": ", end = "") # :
+  print(num_deployments, end = " ")
+  print()
