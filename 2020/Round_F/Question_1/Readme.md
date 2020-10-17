@@ -38,13 +38,18 @@ Overall, O(biggest_n) space and O(biggest_n) time complexities, for all test cas
 
 ### Text_2.txt has 2nd solution in text format - gives TLE on 2nd case
 #### Time limit error - TLE
-#### Similar strategy as in Text_1.txt, however occupies lesser memory
-#### Since we perform append to end of queue, and then remove the initial,
-#### Overall, occupying O(n) space, for each test case, where n is the number of people
+ Similar strategy as in Text_1.txt, however occupies lesser memory
+ 
+ Since we perform append to end of queue, and then remove the initial,
+ 
+ Overall, occupying O(n) space, for each test case, where n is the number of people
 #### Reason of error - we take O(total number of attempts) time, for each test case, where n is the number of people
 
 ### Text_1.txt has 1st solution in text format - gives MLE on 2nd case
 #### Memory limit error - MLE
-#### Uses Brute Force approach, to simulate how the process happens
-#### Reason of error - we take O(total number of attempts) space, for each test case
+
+Uses Brute Force approach, to simulate how the process happens
+
+Reason of error - we take O(total number of attempts) space, for each test case
+
 #### Reason of error - we take O(total number of attempts) time, for each test case
